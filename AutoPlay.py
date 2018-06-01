@@ -7,7 +7,7 @@ from PIL import Image
 def get_screenshot():
     os.system('adb exec-out screencap -p > screenshot.png')
     scr = Image.open('screenshot.png')
-    scr = scr.crop([0, 700, 1080, 1200])
+    scr = scr.crop([0, 520, 670, 870])
     return scr
 
 
@@ -23,9 +23,9 @@ def Play():
         else:
             flag = expr
             if eval(expr):
-                os.system("adb shell input tap 300 1500")
+                os.system("adb shell input tap 200 1200")
             else:
-                os.system("adb shell input tap 800 1500")
+                os.system("adb shell input tap 500 1200")
 
 
 if __name__ == '__main__':

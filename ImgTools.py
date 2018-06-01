@@ -2,11 +2,12 @@ from PIL import Image
 from TimeIt import time_it
 import numpy as np
 import json
-
+import pdb
 
 def binarize(img, threshold=200):
     """二值化"""
     img = img.convert('L')
+    # pdb.set_trace()
     table = []
     for i in range(256):
         if i > threshold:
@@ -99,7 +100,7 @@ def recognize(img):
     """输入：经过裁剪的含有等式的区域图像"""
     img = img.convert('L')
     img = binarize(img)
-
+    # pdb.set_trace()
     h_cut_imgs = horizontal_cut(img)
     chars1 = vertical_cut(h_cut_imgs[0])
     chars2 = vertical_cut(h_cut_imgs[1])
@@ -132,6 +133,6 @@ if __name__ == '__main__':
     """
     以下代码只用于debug
     """
-    scr = Image.open('Screenshots/0th.png')
-    scr = scr.crop([0, 750, 1080, 1150])
+    scr = Image.open('screenshot.png')
+    scr = scr.crop([0, 520, 670, 870])
     print(recognize(scr))
